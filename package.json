@@ -1,8 +1,17 @@
 {
-  "devDependencies": {
-    "typescript": "^3.2.1"
-  },
-  "scripts": {
-      "tsc": "tsc"
-  }
+    "name": "mloughry_aoc2018",
+    "version": "1.0.0",
+    "description": "MLoughry's solutions for Advent of Code 2018",
+    "main": "lib/index.js",
+    "author": "Michael Loughry <miclo@microsoft.com>",
+    "license": "MIT",
+    "dependencies": {
+        "@types/mz": "^0.0.32",
+        "@types/node": "^8.0.53",
+        "mz": "^2.7.0",
+        "typescript": "^2.6.2"
+    },
+    "scripts": {
+        "tsc": "tsc"
+    }
 }
