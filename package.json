@@ -15,7 +15,7 @@
     },
     "scripts": {
         "watch": "tsc -w",
-        "start": "node ./obj/index.js"
+        "start": "node ./src/index.js"
     },
     "devDependencies": {
         "@types/chokidar": "^1.7.5",

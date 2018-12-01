@@ -3,7 +3,7 @@ export interface Solution {
     part2?: string | number;
 }
 
-export type Solver = () => Solution;
+export type Solver = () => Promise<Solution>;
 
 export interface SolutionFile {
     default: Solver;

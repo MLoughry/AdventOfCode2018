@@ -22,11 +22,11 @@ async function main() {
 
 main();
 
-function runSolver(solverFilePath: string) {
+async function runSolver(solverFilePath: string) {
     try {
         delete require.cache[solverFilePath];
         let solver = require(solverFilePath) as SolutionFile;
-        const { part1, part2 } = solver.default();
+        const { part1, part2 } = await solver.default();
         log('');
         if (part1) {
             log(`Part 1: ${part1}`);
