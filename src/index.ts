@@ -1,6 +1,7 @@
 import { SolutionFile } from './common/SolutionFile';
 import { watch } from 'chokidar';
 import log from 'fancy-log'
+import { blue, yellow } from 'ansi-colors';
 
 async function main() {
     if (!process.argv[2]) {
@@ -26,14 +27,16 @@ async function runSolver(solverFilePath: string) {
     try {
         delete require.cache[solverFilePath];
         let solver = require(solverFilePath) as SolutionFile;
+        console.time('Solver runtime');
         const { part1, part2 } = await solver.default();
-        log('');
+        console.timeEnd('Solver runtime');
         if (part1) {
-            log(`Part 1: ${part1}`);
+            log(yellow(`Part 1: ${blue(part1.toString())}`));
         }
         if (part2) {
-            log(`Part 1: ${part2}`);
+            log(yellow(`Part 2: ${blue(part2.toString())}`));
         }
+        log('');
     }
     catch (err) {
         console.error(err);
