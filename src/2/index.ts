@@ -4,10 +4,11 @@ import fs from 'mz/fs';
 import { stringify } from "querystring";
 
 export default async function (): Promise<Solution> {
-    let input = await fs.readFile(path.resolve(__dirname, 'input.txt'), 'utf8');
+    const input = await fs.readFile(path.resolve(__dirname, 'input.txt'), 'utf8');
+    const boxIds = input
+        .split('\n');
 
-    const part1 = input
-        .split('\n')
+    const part1 = boxIds
         .reduce(
             (acc, line) => {
                 let charCounts = new Map<string, number>();
@@ -37,5 +38,27 @@ export default async function (): Promise<Solution> {
         )
         .reduce((acc, i) => acc * i, 1);
 
-    return { part1 };
+    const part2 = boxIds
+            .reduce((answer, id1, index) => {
+                if (answer) return answer;
+
+                return boxIds
+                    .slice(index + 1)
+                    .reduce((newAnswer, id2) => {
+                        if (newAnswer) return newAnswer;
+
+                        let commonLetters = '';
+                        for (let i = 0; i < id1.length; i++) {
+                            if (id1[i] === id2[i]) {
+                                commonLetters += id1[i];
+                            }
+                        }
+
+                        return commonLetters.length === (id1.length - 1) ?
+                            commonLetters :
+                            '';
+                    }, '');
+            }, '')
+
+    return { part1, part2 };
 }
