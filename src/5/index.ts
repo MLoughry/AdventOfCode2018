@@ -7,13 +7,14 @@ export default async function (): Promise<Solution> {
 
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
-    const part1 = collapsePolymer(input);
+    const { size: part1, resultingPolymer: resultingPolymerArray } = collapsePolymer(input);
+    let resultingPolymer = resultingPolymerArray.join('');
 
-    let part2 = input.length;
+    let part2 = resultingPolymer.length;
     for(const l of alphabet) {
         part2 = Math.min(
             part2,
-            collapsePolymer(input.replace(new RegExp(`${l}`, 'gi'), ''))
+            collapsePolymer(resultingPolymer.replace(new RegExp(`${l}`, 'gi'), '')).size
         );
     }
 
@@ -35,6 +36,9 @@ export default async function (): Promise<Solution> {
             }
         }
 
-        return resultingPolymer.length;
+        return {
+            size: resultingPolymer.length,
+            resultingPolymer
+        };
     }
 }
