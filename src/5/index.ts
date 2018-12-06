@@ -13,7 +13,7 @@ export default async function (): Promise<Solution> {
     for(const l of alphabet) {
         part2 = Math.min(
             part2,
-            collapsePolymer(input.replace(new RegExp(`[${l}${l.toUpperCase()}]`, 'g'), ''))
+            collapsePolymer(input.replace(new RegExp(`${l}`, 'gi'), ''))
         );
     }
 
