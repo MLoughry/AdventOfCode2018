@@ -67,7 +67,7 @@ function calculatePart2(input: string) {
     let part2 = 0;
     while (readyQueue.length || tasksInProgress.length) {
         queueAllAvailableTasks();
-        const { completionTime, InProgressTask.step: completedStep } = (tasksInProgress.shift()!);
+        const { completionTime, step: completedStep } = (tasksInProgress.shift()!);
         part2 = completionTime;
         for (const step of completedStep.after) {
             step.before = step.before.filter(b => b.id !== completedStep.id);
