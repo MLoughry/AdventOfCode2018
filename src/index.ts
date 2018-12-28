@@ -30,10 +30,10 @@ async function runSolver(solverFilePath: string) {
         console.time('Solver runtime');
         const { part1, part2 } = await solver.default();
         console.timeEnd('Solver runtime');
-        if (part1) {
+        if (typeof part1 !== 'undefined') {
             log(yellow(`Part 1: ${blue(part1.toString())}`));
         }
-        if (part2) {
+        if (typeof part2 !== 'undefined') {
             log(yellow(`Part 2: ${blue(part2.toString())}`));
         }
         log('');
