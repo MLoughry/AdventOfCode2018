@@ -83,12 +83,12 @@ export default async function (): Promise<Solution> {
         });
 
     const programLineRegex = /^(\d+)\s*(\d+)\s*(\d+)\s*(\d+)/gm;
-    programLineRegex.lastIndex = sampleRegex.lastIndex;
+    programLineRegex.lastIndex = input.indexOf('\r\n\r\n\r\n');
 
     while ((match = programLineRegex.exec(input)) !== null) {
         const [, op, a, b, c] = match.map(m => parseInt(m));
         (opCodeMap[op][0])(registers, a, b, c);
-        console.log(`${opCodeMap[op][1]} ${a} ${b} ${c} => [${registers.join(', ')}]`);
+        // console.log(`${opCodeMap[op][1]} ${a} ${b} ${c} => [${registers.join(', ')}]`);
     }
 
     return {
