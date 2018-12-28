@@ -41,3 +41,10 @@ export const operations: OpCodes = {
     eqri: function (r, a, b, c) { r[c] = r[a] === b ? 1 : 0; return r; },
     eqrr: function (r, a, b, c) { r[c] = r[a] === r[b] ? 1 : 0; return r; },
 }
+
+export interface Instruction {
+    op: OpCode;
+    a: number;
+    b: number;
+    c: number;
+}
